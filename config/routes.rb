@@ -1,5 +1,12 @@
+require "constraints/subdomain_required"
 Twist::Application.routes.draw do
   devise_for :users
+
+  constraints(SubdomainRequired) do
+    scope module: "accounts" do
+      root to: "books#index", as: :account_root
+    end
+  end
 
   root to: "home#index"
   get "/accounts/new", to: "accounts#new", as: :new_account
