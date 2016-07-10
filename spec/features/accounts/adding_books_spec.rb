@@ -10,7 +10,8 @@ feature "Adding books" do
 
 
     it "can add a book" do
-      visit root_url(subdomain: account.subdomain)
+      set_subdomain(account.subdomain)
+      visit root_url
       click_link "Add Book"
       fill_in "Title", with: "Markdown Book Test"
       fill_in "GitHub Path", with: "radar/markdown_book_test"
